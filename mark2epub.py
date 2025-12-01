@@ -256,11 +256,9 @@ def get_chapter_XML(md_filename, css_filenames):
             formated_str_of_classes = re.sub(r"}\s*", "", formated_str_of_classes)
             intermediary = re.sub(r"\s*{.+}\s*", "", tag.string)
             tag.string = intermediary
-            print(tag.string)
             tag["class"] = formated_str_of_classes
 
     html_text = str(soup)
-    print(html_text)
 
     all_xhtml = """<?xml version="1.0" encoding="UTF-8"?>\n"""
     all_xhtml += """<html xmlns="http://www.w3.org/1999/xhtml" xmlns:epub="http://www.idpf.org/2007/ops" lang="en">\n"""
