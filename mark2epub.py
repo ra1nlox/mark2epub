@@ -233,7 +233,7 @@ def get_chapter_XML(md_filename,css_filenames):
 if __name__ == "__main__":
     if len(sys.argv[1:])<2:
         print("\nUsage:\n    python md2epub.py <markdown_directory> <output_file.epub>")
-        exit(1)
+        sys.exit(1)
 
 
     work_dir = sys.argv[1]
@@ -259,6 +259,8 @@ if __name__ == "__main__":
 
     ######################################################
     ## Now creating the ePUB book
+
+    os.makedirs(os.path.dirname(output_path), exist_ok=True)
 
     with zipfile.ZipFile(output_path, "w" ) as myZipFile:
 
