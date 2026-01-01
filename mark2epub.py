@@ -5,6 +5,7 @@ import zipfile
 import sys
 import json
 from bs4 import BeautifulSoup
+import lxml
 import re
 
 ## markdown version 3.1
