@@ -55,7 +55,7 @@ After your text, on every line (at the end of it) you can add class names to tha
 
 Class names can consist of latin letters, digits, hyphens and underscores.
 
-After compiling the braces will be removed.
+After compiling the braces and their insides will be removed.
 
 The code won't handle any typos in class names, so it's up to you to handle it.
 
@@ -65,4 +65,9 @@ The code won't handle any typos in class names, so it's up to you to handle it.
 - Recursive processing of the `images` and `css` folders
 - Support for additional fonts
 - Support for mathematical notation
-- Error handling for class names parsing
+
+## TODO
+
+- [ ] Error handling for class names parsing
+- [ ] Add support for symlinks
+- [ ] `File "mark2epub.py", line 263, in <module> FileNotFoundError: [Errno 2] No such file or directory: '' ` because of no `./` in output path
