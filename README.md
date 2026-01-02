@@ -12,6 +12,7 @@ mark2epub requires:
 - Python (>= 3.4)
 - markdown (>= 3.1)
 - BeautifulSoup4 (>= 4.14.3)
+- lxml (>= 6.0.2)
 
 ### Running mark2epub
 
@@ -58,6 +59,10 @@ Class names can consist of latin letters, digits, hyphens and underscores.
 After compiling the braces and their insides will be removed.
 
 The code won't handle any typos in class names, so it's up to you to handle it.
+
+## No cover
+
+To not set any cover, simply leave the `"cover_image": ""`.
 
 ## Limitations/Features to be addressed
 

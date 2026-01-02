@@ -337,10 +337,13 @@ if __name__ == "__main__":
         myZipFile.writestr("OPS/package.opf", package_data, zipfile.ZIP_DEFLATED)
 
         ## First, we create the cover page
-        coverpage_data = get_coverpage_XML(json_data["cover_image"])
-        myZipFile.writestr(
-            "OPS/titlepage.xhtml", coverpage_data.encode("utf-8"), zipfile.ZIP_DEFLATED
-        )
+        if json_data["cover_image"] != "":
+            coverpage_data = get_coverpage_XML(json_data["cover_image"])
+            myZipFile.writestr(
+                "OPS/titlepage.xhtml",
+                coverpage_data.encode("utf-8"),
+                zipfile.ZIP_DEFLATED,
+            )
 
         ## Now, we are going to convert the Markdown files to xhtml files
         for i, chapter in enumerate(json_data["chapters"]):
