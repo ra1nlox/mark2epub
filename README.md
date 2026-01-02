@@ -74,5 +74,4 @@ To not set any cover, simply leave the `"cover_image": ""`.
 ## TODO
 
 - [ ] Error handling for class names parsing
-- [ ] Add support for symlinks
-- [ ] `File "mark2epub.py", line 263, in <module> FileNotFoundError: [Errno 2] No such file or directory: '' ` because of no `./` in output path
+- [x] Add support for symlinks

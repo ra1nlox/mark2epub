@@ -240,7 +240,14 @@ def parse_classes(element):
 def get_chapter_XML(md_filename, css_filenames):
     ## Returns the XML data for a given markdown chapter file, with the corresponding css chapter files
 
-    with open(os.path.join(work_dir, md_filename), "r", encoding="utf-8") as f:
+    # Setup path of the md file
+    file_path = os.path.join(work_dir, md_filename)
+
+    # Check if the said file is symlink, and if so - reassign the file_path with the absolute path of the symlink target
+    if os.path.islink(file_path):
+        file_path = os.path.abspath(os.readlink(os.path.join(work_dir, md_filename)))
+
+    with open(file_path, "r", encoding="utf-8") as f:
         markdown_data = f.read()
     html_text = markdown.markdown(
         markdown_data,
@@ -384,7 +391,9 @@ if __name__ == "__main__":
             with open(os.path.join(css_dir, css_filename), "rb") as f:
                 filedata = f.read()
             myZipFile.writestr(
-                "OPS/css/{}".format(css_filename), filedata, zipfile.ZIP_DEFLATED
+                "OPS/css/{}".format(css_filename),
+                filedata,
+                zipfile.ZIP_DEFLATED,
             )
 
     print("eBook creation complete")
