@@ -64,7 +64,7 @@ The code won't handle any typos in class names, so it's up to you to handle it.
 
 You can safely use obsidian tags in your markdown files, as the preprocessor will handle their exclusion from the final built epub.
 
-You can also specify which style of new line you use (before the tag, after it, or without any newline before or after the tag) in the description.json, `tag_new_aline_style` field. This new line will be excluded along with the tag.
+You can also specify which style of new line you use (before the tag, after it, or without any newline before or after the tag) in the description.json, `tag_new_line_style` field. This new line will be excluded along with the tag.
 
 The valid values are: `before`, `after` and `zero`, respectively, in upper, lower or mixed case (you do you!).
 
