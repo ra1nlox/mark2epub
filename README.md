@@ -60,6 +60,14 @@ After compiling the braces and their insides will be removed.
 
 The code won't handle any typos in class names, so it's up to you to handle it.
 
+## Obsidian tags
+
+You can safely use obsidian text in your markdown files, as the preprocessor will handle it's exclusion from the final built epub.
+
+You can also specify which style of new line you use (before the tag, after it, or without any newline before or after the tag) in the description.json, `tag_new_line_style` field.
+
+The valid values are: `before`, `after` and `zero`, respectively, in upper, lower or mixed case (you do you!).
+
 ## No cover
 
 To not set any cover, simply leave the `"cover_image": ""`.
@@ -75,3 +83,4 @@ To not set any cover, simply leave the `"cover_image": ""`.
 
 - [ ] Error handling for class names parsing
 - [x] Add support for symlinks
+- [x] Add support for obsidian tags

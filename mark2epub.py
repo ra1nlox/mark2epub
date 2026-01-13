@@ -7,6 +7,7 @@ import json
 from bs4 import BeautifulSoup
 import lxml
 import re
+import file_preprocessor
 
 ## markdown version 3.1
 
@@ -237,7 +238,7 @@ def parse_classes(element):
     return re.findall(r"\s*{[a-zA-Z0-9\s\-\_]+}\s*", el_content)
 
 
-def get_chapter_XML(md_filename, css_filenames):
+def get_chapter_XML(md_filename, css_filenames, tag_new_line_style="AFTER"):
     ## Returns the XML data for a given markdown chapter file, with the corresponding css chapter files
 
     # Setup path of the md file
@@ -247,8 +248,9 @@ def get_chapter_XML(md_filename, css_filenames):
     if os.path.islink(file_path):
         file_path = os.path.abspath(os.readlink(os.path.join(work_dir, md_filename)))
 
-    with open(file_path, "r", encoding="utf-8") as f:
-        markdown_data = f.read()
+    markdown_data = file_preprocessor.delete_tags(
+        file_path, file_preprocessor.HTagNLStyle[tag_new_line_style.upper()]
+    )
     html_text = markdown.markdown(
         markdown_data,
         extensions=["codehilite", "tables", "fenced_code", "footnotes"],
@@ -359,7 +361,11 @@ if __name__ == "__main__":
             if len(chapter["css"]):
                 chapter_css_filenames.append(chapter["css"])
 
-            chapter_data = get_chapter_XML(chapter_md_filename, chapter_css_filenames)
+            chapter_data = get_chapter_XML(
+                chapter_md_filename,
+                chapter_css_filenames,
+                json_data["tag_new_line_style"],
+            )
             myZipFile.writestr(
                 "OPS/s{:05d}-{}.xhtml".format(i, chapter_md_filename.split(".")[0]),
                 chapter_data.encode("utf-8"),

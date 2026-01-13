@@ -2,6 +2,8 @@
 
 This is some simple text in Markdown. {WORKS ON EVERY TAG ALLEGEDLY THO}
 
+#example_of_an_obsidian_tag
+
 ## Section 1 {Allows only whitelisted characters google it}
 
 Denique Antiochensis **ordinis vertices sub uno elogio iussit occidi** ideo efferatus,

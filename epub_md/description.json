@@ -1,24 +1,25 @@
 {
-"metadata":{
-    "dc:title":"Mark2Epub Sample",
-    "dc:creator":"Mark2Epub",
-    "dc:language":"en-US",
-    "dc:identifier":"mark2epub-sample",
-    "dc:source":"",
-    "meta":"",
-    "dc:date":"2023-01-01",
-    "dc:publisher":"",
-    "dc:contributor":"",
-    "dc:rights":"",
-    "dc:description":"",
-    "dc:subject":""
-    },
-"cover_image":"cover.jpg",
-"default_css":["code_styles.css","general.css"],
-"chapters":[
-            {"markdown":"chapter1.md","css":""},
-            {"markdown":"chapter2.md","css":""},
-            {"markdown":"chapter3.md","css":""},
-            {"markdown":"chapter4.md","css":"specific.css"}
-        ]
+  "metadata": {
+    "dc:title": "Mark2Epub Sample",
+    "dc:creator": "Mark2Epub",
+    "dc:language": "en-US",
+    "dc:identifier": "mark2epub-sample",
+    "dc:source": "",
+    "meta": "",
+    "dc:date": "2023-01-01",
+    "dc:publisher": "",
+    "dc:contributor": "",
+    "dc:rights": "",
+    "dc:description": "",
+    "dc:subject": ""
+  },
+  "tag_new_line_style": "after",
+  "cover_image": "cover.jpg",
+  "default_css": ["code_styles.css", "general.css"],
+  "chapters": [
+    { "markdown": "chapter1.md", "css": "" },
+    { "markdown": "chapter2.md", "css": "" },
+    { "markdown": "chapter3.md", "css": "" },
+    { "markdown": "chapter4.md", "css": "specific.css" }
+  ]
 }
