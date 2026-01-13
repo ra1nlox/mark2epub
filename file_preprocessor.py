@@ -51,25 +51,45 @@ class HTagNLStyle(Enum):
     AFTER = 1
 
 
-def delete_tags(path: str, style=HTagNLStyle.AFTER) -> str:
-    md_file = open(path, "r", encoding="utf-8")
-    lines = md_file.readlines()
+class FilePreprocessor:
+    def __init__(self, path: str, style: HTagNLStyle = HTagNLStyle.AFTER):
+        """
+        Initiates the preprocessor using path to a file and new line style (enum)
+        """
+        self.md_file = open(path, "r", encoding="utf-8")
+        self.lines = self.md_file.readlines()
+        self.style = style
 
-    for line in lines:
-        htag_match = re.fullmatch(r"^\#\S+\n$", line)
-        if htag_match:
-            try:
-                if lines.index(line) != 0 and style.value != 0:
-                    lines.pop(lines.index(line) + style.value)
-                lines.remove(line)
-            except IndexError:
-                lines.remove(line)
+    def delete_tags(self):
+        """
+        Deletes obsidian style tags (check file docstring)
+        """
+        for line in self.lines:
+            htag_match = re.fullmatch(r"^\#\S+\n$", line)
+            if htag_match:
+                try:
+                    if self.lines.index(line) != 0 and self.style.value != 0:
+                        self.lines.pop(self.lines.index(line) + self.style.value)
+                    self.lines.remove(line)
+                except IndexError:
+                    self.lines.remove(line)
+        return self
 
-    contents = "".join(lines)
-    md_file.close()
+    def close(self):
+        """
+        Closes the file connection
+        """
+        self.md_file.close()
+        return self
 
-    return contents
+    def get(self) -> str:
+        """
+        :return: Final processed string
+        :rtype: str
+        """
+        self.close()
+        return "".join(self.lines)
 
 
 if __name__ == "__main__":
-    print(delete_tags(sys.argv[1], style=HTagNLStyle.ZERO))
+    print(FilePreprocessor(sys.argv[1], style=HTagNLStyle.ZERO).delete_tags().get())

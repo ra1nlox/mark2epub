@@ -7,7 +7,7 @@ import json
 from bs4 import BeautifulSoup
 import lxml
 import re
-import file_preprocessor
+from file_preprocessor import FilePreprocessor, HTagNLStyle
 
 ## markdown version 3.1
 
@@ -248,8 +248,10 @@ def get_chapter_XML(md_filename, css_filenames, tag_new_line_style="AFTER"):
     if os.path.islink(file_path):
         file_path = os.path.abspath(os.readlink(os.path.join(work_dir, md_filename)))
 
-    markdown_data = file_preprocessor.delete_tags(
-        file_path, file_preprocessor.HTagNLStyle[tag_new_line_style.upper()]
+    markdown_data = (
+        FilePreprocessor(file_path, HTagNLStyle[tag_new_line_style.upper()])
+        .delete_tags()
+        .get()
     )
     html_text = markdown.markdown(
         markdown_data,
