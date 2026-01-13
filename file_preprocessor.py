@@ -68,8 +68,9 @@ class FilePreprocessor:
             htag_match = re.fullmatch(r"^\#\S+\n$", line)
             if htag_match:
                 try:
-                    if self.lines.index(line) != 0 and self.style.value != 0:
-                        self.lines.pop(self.lines.index(line) + self.style.value)
+                    if self.style.value != 0:
+                        if self.lines.index(line) != 0:
+                            self.lines.pop(self.lines.index(line) + self.style.value)
                     self.lines.remove(line)
                 except IndexError:
                     self.lines.remove(line)
