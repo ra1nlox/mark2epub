@@ -2,7 +2,7 @@
 
 This is some simple text in Markdown. {WORKS ON EVERY TAG ALLEGEDLY THO}
 
-#example_of_an_obsidian_tag
+#example_of_an_obsidian_tag #multiple_tags
 
 ## Section 1 {Allows only whitelisted characters google it}
 

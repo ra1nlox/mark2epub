@@ -65,7 +65,7 @@ class FilePreprocessor:
         Deletes obsidian style tags (check file docstring)
         """
         for line in self.lines:
-            htag_match = re.fullmatch(r"^\#\S+\n$", line)
+            htag_match = re.fullmatch(r"^#\w+(?:\s+#\w+)*\n$", line)
             if htag_match:
                 try:
                     if self.style.value != 0:
